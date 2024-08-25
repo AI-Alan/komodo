@@ -1,0 +1,64 @@
+#!/Users/amankumaryadav/Desktop/komodo/python/bin/python
+# /usr/bin/env python3  this
+import os 
+import sys
+import subprocess
+from func import *
+
+
+path = "/Users/amankumaryadav/Desktop/"         #platform and user sprcific installation loacatin
+pr_name = os.path.join(path,'komodo/bin/komo')  #path of program name
+envs_path = os.path.join(path,"komodo/envs")    #path of virtual environments present
+doc_path = os.path.join(path,"komodo/doc.txt")  #path of documentation file
+curent_env = []
+
+
+if (sys.argv[0] == pr_name):
+    try :
+        if(sys.argv[1] == "create"):
+            create()
+        elif(sys.argv[1] == "env"):
+            if(sys.argv[2] == "list"):
+                for env in os.listdir(envs_path):
+                    print(env)
+            else :
+                print("Current virtual environment : ",curent_env[0])        
+
+        elif(sys.argv[1] == "del"):
+            delete(sys.argv[2])    
+
+        elif(sys.argv[1] == "ch"):
+            
+            change_venv(sys.argv[2])
+            curent_env = [sys.argv[2]]
+
+        elif(sys.argv[1] == "close"):
+
+            #subprocess.call(['/bin/bash','--rcfile','exit'])
+            # subprocess.call(['exit'])  
+            os.system("exit")
+          
+
+    
+    except IndexError:
+        subprocess.call(['cat',doc_path])
+         
+
+
+        
+    
+            
+    
+        
+            
+
+
+
+    
+              
+
+    
+        
+        
+
+
